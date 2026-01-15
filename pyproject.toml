@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "payouts"
+version = "0.1.0"
+description = ""
+authors = ["michael <michael@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^6.0.1"
+djangorestframework = "^3.16.1"
+celery = "^5.6.2"
+redis = "^7.1.0"
+psycopg2-binary = "^2.9.11"
+drf-yasg = "^1.21.12"
+mypy = "^1.11"
+django-stubs = {extras = ["compatible-mypy"], version = "^5.1"}
+djangorestframework-stubs = {extras = ["compatible-mypy"], version = "^3.15"}
+ruff = "^0.6"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+exclude = ["**/migrations/*.py"]
+
+[tool.mypy]
+python_version = "3.12"
+plugins = ["mypy_django_plugin.main", "mypy_drf_plugin.main"]
+strict = true
+ignore_missing_imports = true
+exclude = ["migrations/", "tests/"]
+disallow_untyped_decorators = false
+
+[tool.django-stubs]
+django_settings_module = "config.settings"
+
